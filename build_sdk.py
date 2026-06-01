@@ -153,6 +153,18 @@ class KernelPath:
 
 SUPPORTED_BOARDS = (
     BoardInfo(
+        name="aws_ec2_t4g_small",
+        arch=KernelArch.AARCH64,
+        gcc_cpu="neoverse-n1",
+        loader_link_address=0x70000000,
+        smp_cores=2,
+        kernel_options=DEFAULT_KERNEL_OPTIONS_AARCH64 | {
+            "KernelPlatform": "qemu-arm-virt",
+            "KernelArmHypervisorSupport": False,
+            "KernelArmExportPTMRUser": True,
+        },
+    ),
+    BoardInfo(
         name="kria_k26",
         arch=KernelArch.AARCH64,
         gcc_cpu="cortex-a53",
